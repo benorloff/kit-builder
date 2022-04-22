@@ -10,4 +10,5 @@ def about(request):
     return render(request, 'about.html')
 
 def cameras_index(request):
-    return render(request, 'cameras/index.html', { 'cameras': cameras })
+    cameras = Camera.objects.order_by('make')
+    return render(request, 'cameras/index.html', { cameras })
