@@ -1,4 +1,7 @@
+import datetime
+
 from django.db import models
+from django.utils import timezone
 
 class Camera(models.Model): 
     make = models.CharField(max_length=30)
