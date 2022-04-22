@@ -10,3 +10,5 @@ class Camera(models.Model):
     lens_mount = models.CharField(max_length=50)
     sensor_size = models.CharField(max_length=50)
     sensor_mp = models.DecimalField(max_digits=5, decimal_places=2)
+    def __str__(self):
+        return self.make, self.model
