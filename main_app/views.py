@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 
 from .models import Camera
@@ -11,4 +11,9 @@ def about(request):
 
 def cameras_index(request):
     cameras = Camera.objects.order_by('make')
-    return render(request, 'cameras/index.html', { cameras })
+    context = {'cameras': cameras}
+    return render(request, 'cameras/index.html', context)
+
+def cameras_detail(request, camera_id):
+    camera = get_object_or_404(Camera, pk=camera_id)
+    return render(request, 'cameras/detail.html', {'camera': camera})
