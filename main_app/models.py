@@ -11,4 +11,4 @@ class Camera(models.Model):
     sensor_size = models.CharField(max_length=50)
     sensor_mp = models.DecimalField(max_digits=5, decimal_places=2)
     def __str__(self):
-        return self.make, self.model
+        return (f"{self.make} {self.model}")
