@@ -15,7 +15,7 @@ cameras = [
   Camera('Leica', 'M11', 'Large SLR', 'Leica M', 'Full frame', 60),
   Camera('Sony', 'a7 IV', 'SLR-style mirrorless', 'Sony E', 'Full frame', 33),
   Camera('Fujifilm', 'GFX 100S', 'SLR-style mirrorless', 'Fujifilm G', 'Medium format', 102),
-  Camera('Canon', 'EOS R3', 'SLR-style mirrorless', 'Canon RF', 'Full frame', 24),
+  Camera('Canon', 'EOS R3', 'SLR-style mirrorless', 'Canon RF', 'Full frame', 24)
 ]
 
 def home(request):
