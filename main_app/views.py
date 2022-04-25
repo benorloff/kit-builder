@@ -1,12 +1,28 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from django.views import generic
+
+from .forms import NewUserForm
+from django.contrib.auth import login
+from django.contrib import messages
 
 from .models import Camera, Lens
 
 def home(request):
     return HttpResponse('<h1>Welcome to KitBuilder!</h1>')
+
+def register_request(request):
+    if request.method == 'POST':
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful.")
+            return redirect('main_app:home')
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+        form = NewUserForm()
+        return render (request=request, template_name='register.html', context={'register_form':form})
 
 def about(request):
     return render(request, 'about.html')
