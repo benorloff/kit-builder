@@ -22,8 +22,8 @@ def register_request(request):
             messages.success(request, "Registration successful.")
             return redirect('main_app:home')
         messages.error(request, "Unsuccessful registration. Invalid information.")
-        form = NewUserForm()
-        return render(request, 'register.html', {'register_form': form})
+    form = NewUserForm()
+    return render(request, 'register.html', {'register_form': form})
 
 def login_request(request):
     if request.method == 'POST':
@@ -42,6 +42,11 @@ def login_request(request):
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
     return render(request, 'login.html', {'login_form': form})
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return redirect('main_app:home')
 
 def about(request):
     return render(request, 'about.html')
