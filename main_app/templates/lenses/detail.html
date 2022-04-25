@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ lens.make }} {{ lens.model }}</h1>
+
+<p>Lens Type: {{ lens.lens_type }}</p>
+<p>Focal Length: {{ lens.focal_length }}</p>
+<p>Image Stabilized: {{ lens.image_stab }}</p>
+<p>Mount: {{ lens.mount }}</p>
+<p>Max Aperture: {{ lens.max_aperture }}</p>
+<p>Min Aperture: {{ lens.min_aperture }}</p>
+
+{% endblock %}
