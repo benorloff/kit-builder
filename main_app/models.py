@@ -21,8 +21,8 @@ class Lens(models.Model):
     focal_length = models.CharField(max_length=30)
     image_stab = models.BooleanField()
     mount = models.CharField(max_length=30)
-    max_aperature = models.CharField(max_length=10)
-    min_aperature = models.CharField(max_length=10)
+    max_aperture = models.CharField(max_length=10)
+    min_aperture = models.CharField(max_length=10)
     # image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
