@@ -10,7 +10,7 @@ class Camera(models.Model):
     lens_mount = models.CharField(max_length=50)
     sensor_size = models.CharField(max_length=50)
     sensor_mp = models.DecimalField(max_digits=5, decimal_places=2)
-    image = models.FileField(upload_to='images/cameras/%Y/%m/%d/')
+    # image = models.FileField(upload_to='images/cameras/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
 
@@ -23,6 +23,6 @@ class Lens(models.Model):
     mount = models.CharField(max_length=30)
     max_aperature = models.CharField(max_length=10)
     min_aperature = models.CharField(max_length=10)
-    image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
+    # image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
