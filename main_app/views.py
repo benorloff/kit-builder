@@ -1,8 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
+from django.urls import reverse
+from django.views import generic
 
-from .models import Camera
-from .models import Lens
+from .models import Camera, Lens
 
 def home(request):
     return HttpResponse('<h1>Welcome to KitBuilder!</h1>')

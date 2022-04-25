@@ -13,7 +13,7 @@
     <p>Mount: {{ lens.mount }}</p>
     <p>Max Aperture: {{ lens.max_aperture }}</p>
     <p>Min Aperture: {{ lens.min_aperture }}</p>
-      <a href="{% url 'main_app:detail' camera.id %}" class="btn-floating"><i class="material-icons">arrow_forward</i></a>
+      <a href="{% url 'main_app:detail' lens.id %}" class="btn-floating"><i class="material-icons">arrow_forward</i></a>
     </div>
   </div>
 {% endfor %}
