@@ -26,3 +26,10 @@ class Lens(models.Model):
     # image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
+
+class Kit(models.Model):
+    name = models.CharField(max_length=50)
+    cameras = models.ManyToManyField(Camera)
+    lenses = models.ManyToManyField(Lens)
+    def __str__(self):
+        return (f"{self.name}")
