@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
-from django.views import generic
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import NewUserForm
 from django.contrib.auth import login, logout, authenticate
