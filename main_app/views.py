@@ -56,8 +56,13 @@ def about(request):
 class KitList(ListView):
     model = Kit
 
+class KitCreate(CreateView):
+    model = Kit
+    fields = '__all__'
+
 class CameraList(ListView):
     model = Camera
+    template_name = 'cameras/index.html'
 
 class LensList(ListView):
     pass
@@ -65,10 +70,10 @@ class LensList(ListView):
 class AccessoryList(ListView):
     pass
 
-def cameras_index(request):
-    cameras = Camera.objects.order_by('make')
-    context = {'cameras': cameras}
-    return render(request, 'cameras/index.html', context)
+# def cameras_index(request):
+#     cameras = Camera.objects.order_by('make')
+#     context = {'cameras': cameras}
+#     return render(request, 'cameras/index.html', context)
 
 def cameras_detail(request, camera_id):
     camera = get_object_or_404(Camera, pk=camera_id)

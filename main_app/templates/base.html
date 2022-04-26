@@ -20,6 +20,7 @@
         </ul>
         <ul class="right">
           <li><a href="/about">About</a></li>
+          <li><a href="{% url 'kits_create' %}">Add a Kit</a></li>
           <li><a href="/cameras">My Cameras</a></li>
           <li><a href="/lenses">My Lenses</a></li>
           {% if user.is_authenticated %}

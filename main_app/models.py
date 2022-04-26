@@ -85,6 +85,8 @@ class Accessory(models.Model):
     make = models.CharField(max_length=255)
     model = models.CharField(max_length=255)
     type = models.CharField(max_length=255, choices=TYPE_CHOICES)
+    def __str__(self):
+        return f"{self.make} {self.model}"
 
 class Kit(models.Model):
     name = models.CharField(max_length=255)
