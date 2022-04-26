@@ -51,6 +51,19 @@ def logout_request(request):
 def about(request):
     return render(request, 'about.html')
 
+class KitList(ListView):
+    model = Camera
+    
+
+class CameraList(ListView):
+    pass
+
+class LensList(ListView):
+    pass
+
+class AccessoryList(ListView):
+    pass
+
 def cameras_index(request):
     cameras = Camera.objects.order_by('make')
     context = {'cameras': cameras}
