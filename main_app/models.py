@@ -5,26 +5,26 @@ from django.utils import timezone
 
 class Camera(models.Model):
     MAKE_CHOICES = [
-        ('AGFA', 'Agfa'),
-        ('CANON', 'Canon'),
-        ('CASIO', 'Casio'),
-        ('CONTAX', 'Contax'),
-        ('DXO_LABS', 'DxO Labs'),
-        ('FUJIFILM', 'Fujifilm'),
-        ('HASSELBLAD', 'Hasselblad'),
-        ('KODAK', 'Kodak'),
-        ('MINOLTA', 'Minolta'),
-        ('KYOCERA', 'Kyocera'),
-        ('LEICA', 'Leica'),
-        ('NIKON', 'Nikon'),
-        ('OLYMPUS', 'Olympus'),
-        ('PANASONIC', 'Panasonic'),
-        ('PENTAX', 'Pentax'),
-        ('RICOH', 'Ricoh'),
-        ('SAMSUNG', 'Samsung'),
-        ('SIGMA', 'Sigma'),
-        ('SONY', 'Sony'),
-        ('ZEISS', 'Zeiss'),
+        ('AGF', 'Agfa'),
+        ('CAN', 'Canon'),
+        ('CAS', 'Casio'),
+        ('CON', 'Contax'),
+        ('DXO', 'DxO Labs'),
+        ('FUJ', 'Fujifilm'),
+        ('HAS', 'Hasselblad'),
+        ('KOD', 'Kodak'),
+        ('MIN', 'Minolta'),
+        ('KYO', 'Kyocera'),
+        ('LEI', 'Leica'),
+        ('NIK', 'Nikon'),
+        ('OLY', 'Olympus'),
+        ('PAN', 'Panasonic'),
+        ('PEN', 'Pentax'),
+        ('RIC', 'Ricoh'),
+        ('SAM', 'Samsung'),
+        ('SIG', 'Sigma'),
+        ('SON', 'Sony'),
+        ('ZEI', 'Zeiss'),
     ] 
     make = models.CharField(max_length=30, choices=MAKE_CHOICES)
     model = models.CharField(max_length=50)
@@ -41,7 +41,7 @@ class Lens(models.Model):
     model = models.CharField(max_length=100)
     lens_type = models.CharField(max_length=30)
     focal_length = models.CharField(max_length=30)
-    image_stab = models.BooleanField()
+    image_stab = models.BooleanField('Image Stabilized')
     mount = models.CharField(max_length=30)
     max_aperture = models.CharField(max_length=10)
     min_aperture = models.CharField(max_length=10)
