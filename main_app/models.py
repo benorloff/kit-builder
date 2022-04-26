@@ -25,8 +25,8 @@ class Camera(models.Model):
         ('SIG', 'Sigma'),
         ('SON', 'Sony'),
         ('ZEI', 'Zeiss'),
-    ] 
-    make = models.CharField(max_length=3, choices=MAKE_CHOICES)
+    ]
+    make = models.CharField(max_length=30, choices=MAKE_CHOICES)
     model = models.CharField(max_length=50)
     body_type = models.CharField(max_length=50)
     lens_mount = models.CharField(max_length=50)
@@ -37,7 +37,7 @@ class Camera(models.Model):
         return (f"{self.make} {self.model}")
 
 class Lens(models.Model):
-    MAKE_CHOICES = (
+    MAKE_CHOICES = [
         ('BOW', 'Bower'),
         ('CAN', 'Canon'),
         ('IRI', 'Irix'),
@@ -62,8 +62,8 @@ class Lens(models.Model):
         ('YON', 'Yongnuo'),
         ('ZEI', 'Zeiss'),
         ('ZEN', 'Zenit'),
-    )
-    make = models.CharField(max_length=3, choices=MAKE_CHOICES)
+    ]
+    make = models.CharField(max_length=30, choices=MAKE_CHOICES)
     model = models.CharField(max_length=100)
     lens_type = models.CharField(max_length=30)
     focal_length = models.CharField(max_length=30)
@@ -76,15 +76,15 @@ class Lens(models.Model):
         return (f"{self.make} {self.model}")
 
 class Accessory(models.Model):
-    TYPE_CHOICES = (
+    TYPE_CHOICES = [
         ('BAC', 'Backpack'),
         ('FIL', 'Filter'),
         ('LIG', 'Lighting'),
         ('TRI', 'Tripod'),
-    )
+    ]
     make = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
-    type = models.CharField(max_length=3, choices=TYPE_CHOICES)
+    type = models.CharField(max_length=30, choices=TYPE_CHOICES)
 
 class Kit(models.Model):
     name = models.CharField(max_length=50)
