@@ -26,11 +26,11 @@ class Camera(models.Model):
         ('SON', 'Sony'),
         ('ZEI', 'Zeiss'),
     ]
-    make = models.CharField(max_length=30, choices=MAKE_CHOICES)
-    model = models.CharField(max_length=50)
-    body_type = models.CharField(max_length=50)
-    lens_mount = models.CharField(max_length=50)
-    sensor_size = models.CharField(max_length=50)
+    make = models.CharField(max_length=255, choices=MAKE_CHOICES)
+    model = models.CharField(max_length=255)
+    body_type = models.CharField(max_length=255)
+    lens_mount = models.CharField(max_length=255)
+    sensor_size = models.CharField(max_length=255)
     sensor_mp = models.DecimalField(max_digits=5, decimal_places=2)
     # image = models.FileField(upload_to='images/cameras/%Y/%m/%d/')
     def __str__(self):
@@ -63,14 +63,14 @@ class Lens(models.Model):
         ('ZEI', 'Zeiss'),
         ('ZEN', 'Zenit'),
     ]
-    make = models.CharField(max_length=30, choices=MAKE_CHOICES)
-    model = models.CharField(max_length=100)
-    lens_type = models.CharField(max_length=30)
-    focal_length = models.CharField(max_length=30)
+    make = models.CharField(max_length=255, choices=MAKE_CHOICES)
+    model = models.CharField(max_length=255)
+    lens_type = models.CharField(max_length=255)
+    focal_length = models.CharField(max_length=255)
     image_stab = models.BooleanField('Image Stabilized')
-    mount = models.CharField(max_length=30)
-    max_aperture = models.CharField(max_length=10)
-    min_aperture = models.CharField(max_length=10)
+    mount = models.CharField(max_length=255)
+    max_aperture = models.CharField(max_length=255)
+    min_aperture = models.CharField(max_length=255)
     # image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
@@ -82,12 +82,12 @@ class Accessory(models.Model):
         ('LIG', 'Lighting'),
         ('TRI', 'Tripod'),
     ]
-    make = models.CharField(max_length=50)
-    model = models.CharField(max_length=50)
-    type = models.CharField(max_length=30, choices=TYPE_CHOICES)
+    make = models.CharField(max_length=255)
+    model = models.CharField(max_length=255)
+    type = models.CharField(max_length=255, choices=TYPE_CHOICES)
 
 class Kit(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=255)
     cameras = models.ManyToManyField(Camera)
     lenses = models.ManyToManyField(Lens)
     def __str__(self):
