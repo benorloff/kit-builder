@@ -90,5 +90,6 @@ class Kit(models.Model):
     name = models.CharField(max_length=255)
     cameras = models.ManyToManyField(Camera)
     lenses = models.ManyToManyField(Lens)
+    accessories = models.ManyToManyField(Accessory)
     def __str__(self):
         return (f"{self.name}")
