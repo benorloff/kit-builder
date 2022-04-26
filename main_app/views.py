@@ -10,7 +10,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import Camera, Lens
+from .models import Kit, Camera, Lens, Accessory
 
 def home(request):
     return HttpResponse('<h1>Welcome to KitBuilder!</h1>')
@@ -54,11 +54,10 @@ def about(request):
     return render(request, 'about.html')
 
 class KitList(ListView):
-    model = Camera
-
+    model = Kit
 
 class CameraList(ListView):
-    pass
+    model = Camera
 
 class LensList(ListView):
     pass
