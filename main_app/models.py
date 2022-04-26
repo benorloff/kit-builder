@@ -37,6 +37,32 @@ class Camera(models.Model):
         return (f"{self.make} {self.model}")
 
 class Lens(models.Model):
+    MAKE_CHOICES = (
+        ('BOW', 'Bower'),
+        ('CAN', 'Canon'),
+        ('IRI', 'Irix'),
+        ('KOW', 'Kowa'),
+        ('LEN', 'Lensbaby'),
+        ('MEI', 'Meike'),
+        ('MEY', 'Meyer-Optik Gorlitz'),
+        ('MIT', 'Mitakon Zhongyi'),
+        ('NIK', 'Nikon'),
+        ('OPT', 'Opteka'),
+        ('PEN', 'Pentax'),
+        ('ROK', 'Rokinon'),
+        ('SAM', 'Samyang'),
+        ('SCH', 'Schneider'),
+        ('SIG', 'Sigma'),
+        ('SON', 'Sony'),
+        ('TAM', 'Tamron'),
+        ('TOK', 'Tokina'),
+        ('VEN', 'Venus Optics'),
+        ('VIV', 'Vivitar'),
+        ('VOI', 'Voigtlander'),
+        ('YON', 'Yongnuo'),
+        ('ZEI', 'Zeiss'),
+        ('ZEN', 'Zenit'),
+    )
     make = models.CharField(max_length=30)
     model = models.CharField(max_length=100)
     lens_type = models.CharField(max_length=30)
