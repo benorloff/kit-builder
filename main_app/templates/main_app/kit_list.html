@@ -6,12 +6,13 @@
 {% for kit in kit_list %}
   <div class="card">
     <div class="card-content">
-      <a href="{% url 'main_app:kits_detail' kit.id %}"><span class="card-title">{{ kit.name }}</span></a>
+      <span class="card-title">{{ kit.name }}</span>
     </div>
     <div class="card-action">
-      <a href="{% url 'main_app:kits_update' kit.id %}">Edit</a>
-      <a href="{% url 'main_app:kits_delete' kit.id %}">Delete</a>
-  </div>
+        <a href="{% url 'main_app:kits_detail' kit.id %}">View</a>
+        <a href="{% url 'main_app:kits_update' kit.id %}">Edit</a>
+        <a href="{% url 'main_app:kits_delete' kit.id %}">Delete</a>
+    </div>
   </div>
 {% endfor %}
 

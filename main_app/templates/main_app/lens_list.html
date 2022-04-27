@@ -6,14 +6,13 @@
 {% for lens in lens_list %}
   <div class="card">
     <div class="card-content">
-      <span class="card-title">{{ lens.make }} {{ lens.model }}</span>
-      <p>Lens Type: {{ lens.lens_type }}</p>
-    <p>Focal Length: {{ lens.focal_length }}</p>
-    <p>Image Stabilized: {{ lens.image_stab }}</p>
-    <p>Mount: {{ lens.mount }}</p>
-    <p>Max Aperture: {{ lens.max_aperture }}</p>
-    <p>Min Aperture: {{ lens.min_aperture }}</p>
-      <a href="{% url 'main_app:detail' lens.id %}" class="btn-floating"><i class="material-icons">arrow_forward</i></a>
+        <span class="card-title">{{ lens.make }} {{ lens.model }}</span>
+        <p>Lens Type: {{ lens.lens_type }}</p>
+    </div>
+    <div class="card-action">
+        <a href="{% url 'main_app:lenses_detail' lens.id %}">View</a>
+        <a href="{% url 'main_app:lenses_update' lens.id %}">Edit</a>
+        <a href="{% url 'main_app:lenses_delete' lens.id %}">Delete</a>
     </div>
   </div>
 {% endfor %}
