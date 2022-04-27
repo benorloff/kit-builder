@@ -36,6 +36,8 @@ class Camera(models.Model):
     # image = models.FileField(upload_to='images/cameras/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
+    def get_absolute_url(self):
+        return reverse('main_app:cameras_detail', kwargs={'pk': self.id})
 
 class Lens(models.Model):
     MAKE_CHOICES = [
@@ -75,6 +77,8 @@ class Lens(models.Model):
     # image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
+    def get_absolute_url(self):
+        return reverse('main_app:lenses_detail', kwargs={'pk': self.id})
 
 class Kit(models.Model):
     name = models.CharField(max_length=255)
@@ -83,4 +87,4 @@ class Kit(models.Model):
     def __str__(self):
         return (f"{self.name}")
     def get_absolute_url(self):
-        return reverse('kits_detail', kwargs={'pk': self.id})
+        return reverse('main_app:kits_detail', kwargs={'pk': self.id})
