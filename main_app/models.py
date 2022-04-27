@@ -75,6 +75,8 @@ class Lens(models.Model):
     max_aperture = models.CharField(max_length=255)
     min_aperture = models.CharField(max_length=255)
     # image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
+    class Meta:
+        verbose_name_plural = 'lenses'
     def __str__(self):
         return (f"{self.make} {self.model}")
     def get_absolute_url(self):
