@@ -56,9 +56,21 @@ def about(request):
 class KitList(ListView):
     model = Kit
 
+class KitDetail(DetailView):
+    model = Kit
+
 class KitCreate(CreateView):
     model = Kit
-    fields = '__all__'
+    fields = ['name']
+    success_url = '/kits/'
+
+class KitUpdate(UpdateView):
+    model = Kit
+    fields = ['name']
+
+class KitDelete(DeleteView):
+    model = Kit
+    success_url = '/kits/'
 
 class CameraList(ListView):
     model = Camera
@@ -78,6 +90,14 @@ class AccessoryList(ListView):
 def cameras_detail(request, camera_id):
     camera = get_object_or_404(Camera, pk=camera_id)
     return render(request, 'cameras/detail.html', {'camera': camera})
+
+class CameraUpdate(UpdateView):
+    model = Camera
+    fields = '__all__'
+
+class CameraDelete(DeleteView):
+    model = Camera
+    success_url = '/cameras/'
 
 def lenses_index(request):
     lenses = Lens.objects.order_by('make')

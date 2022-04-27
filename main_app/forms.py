@@ -23,7 +23,7 @@ class NewUserForm(UserCreationForm):
             user.save()
         return user
 
-class KitForm(ModelForm):
-    class Meta:
-        model = Kit
-        fields = ['name']
+# class KitForm(ModelForm):
+#     class Meta:
+#         model = Kit
+#         fields = ['name']
