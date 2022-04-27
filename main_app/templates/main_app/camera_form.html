@@ -2,7 +2,11 @@
 
 {% block content %}
 
-<h1>Add Camera</h1>
+{% if camera %}
+    <h1>Edit {{camera.make}} {{camera.model}}</h1>
+{% else %}
+    <h1>Add Camera</h1>
+{% endif %}
 
 <form action="" method="post">
     {% csrf_token %}
