@@ -68,7 +68,7 @@ def kits_detail(request, kit_id):
     return render(request, 'main_app/kit_detail.html', {
         'kit': kit,
         'cameras': cameras_kit_doesnt_have,
-        'lenses': lenses_kit_doesnt_have
+        'lenses': lenses_kit_doesnt_have,
     })
 
 def assoc_camera(request, kit_id, camera_id):
