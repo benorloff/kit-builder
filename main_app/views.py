@@ -64,7 +64,7 @@ class KitCreate(CreateView):
 def kits_detail(request, kit_id):
     kit = Kit.objects.get(id=kit_id)
     cameras_kit_doesnt_have = Camera.objects.exclude(id__in = kit.cameras.all().values_list('id'))
-    lenses_kit_doesnt_have = Camera.objects.exclude(id__in = kit.lenses.all().values_list('id'))
+    lenses_kit_doesnt_have = Lens.objects.exclude(id__in = kit.lenses.all().values_list('id'))
     return render(request, 'main_app/kit_detail.html', {
         'kit': kit,
         'cameras': cameras_kit_doesnt_have,
