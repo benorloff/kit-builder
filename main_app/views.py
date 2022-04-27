@@ -56,13 +56,13 @@ def about(request):
 class KitList(ListView):
     model = Kit
 
-class KitDetail(DetailView):
-    model = Kit
-
 class KitCreate(CreateView):
     model = Kit
     fields = ['name']
     success_url = '/kits/'
+
+class KitDetail(DetailView):
+    model = Kit
 
 class KitUpdate(UpdateView):
     model = Kit
@@ -74,13 +74,13 @@ class KitDelete(DeleteView):
 
 class CameraList(ListView):
     model = Camera
-    template_name = 'cameras/index.html'
+
+class CameraCreate(CreateView):
+    model = Camera
+    fields = '__all__'
 
 class CameraDetail(DetailView):
     model = Camera
-
-class LensList(ListView):
-    pass
 
 class CameraUpdate(UpdateView):
     model = Camera
@@ -90,11 +90,20 @@ class CameraDelete(DeleteView):
     model = Camera
     success_url = '/cameras/'
 
-def lenses_index(request):
-    lenses = Lens.objects.order_by('make')
-    context = {'lenses': lenses}
-    return render(request, 'lenses/index.html', context)
+class LensList(ListView):
+    model = Lens
 
-def lenses_detail(request, lens_id):
-    lens = get_object_or_404(Lens, pk=lens_id)
-    return render(request, 'lenses/detail.html', {'lens': lens})
+class LensCreate(CreateView):
+    model = Lens
+    fields = '__all__'
+
+class LensDetail(DetailView):
+    model = Lens
+
+class LensUpdate(UpdateView):
+    model = Lens
+    fields = '__all__'
+
+class LensDelete(DeleteView):
+    model = Lens
+    success_url = '/lenses/'
