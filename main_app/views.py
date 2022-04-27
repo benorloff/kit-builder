@@ -10,7 +10,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import Kit, Camera, Lens, Accessory
+from .models import Kit, Camera, Lens
 
 def home(request):
     return HttpResponse('<h1>Welcome to KitBuilder!</h1>')
@@ -78,14 +78,6 @@ class CameraList(ListView):
 
 class LensList(ListView):
     pass
-
-class AccessoryList(ListView):
-    pass
-
-# def cameras_index(request):
-#     cameras = Camera.objects.order_by('make')
-#     context = {'cameras': cameras}
-#     return render(request, 'cameras/index.html', context)
 
 def cameras_detail(request, camera_id):
     camera = get_object_or_404(Camera, pk=camera_id)
