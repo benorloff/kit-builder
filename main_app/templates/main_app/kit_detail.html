@@ -17,4 +17,90 @@
   </div>
 </div>
 
+<hr>
+
+<div class="row">
+  <div class="col s6">
+    <h3>Cameras</h3>
+    {% if kit.cameras.count %}
+      {% for toy in kit.cameras.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{ camera.make }} {{ camera.model }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No cameras in this kit yet.</h5>
+    {% endif %}
+  </div>
+  <div class="col s6">
+    <h3>Lenses</h3>
+    {% if kit.lenses.count %}
+      {% for toy in kit.lenses.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{ lens.make }} {{ lens.model }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No lenses in this kit yet.</h5>
+    {% endif %}
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col s6">
+    <h3>Available Cameras</h3>
+    {% if cameras.count %}
+      {% for camera in cameras.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{ camera.make }} {{ camera.model }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'main_app:assoc_camera' kit.id camera.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{kit.name}} Already has all cameras available</h5>
+    {% endif %}
+  </div>
+  <div class="col s6">
+    <h3>Available Lenses</h3>
+    {% if lenses.count %}
+      {% for lens in lenses.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{ lens.make }} {{ lens.model }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'main_app:assoc_lens' kit.id lens.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{kit.name}} Already has all lenses available</h5>
+    {% endif %}
+  </div>
+</div>
+
 {% endblock %}

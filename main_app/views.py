@@ -61,8 +61,23 @@ class KitCreate(CreateView):
     fields = ['name']
     success_url = '/kits/'
 
-class KitDetail(DetailView):
-    model = Kit
+def kits_detail(request, kit_id):
+    kit = Kit.objects.get(id=kit_id)
+    cameras_kit_doesnt_have = Camera.objects.exclude(id__in = kit.cameras.all().values_list('id'))
+    lenses_kit_doesnt_have = Camera.objects.exclude(id__in = kit.lenses.all().values_list('id'))
+    return render(request, 'main_app/kit_detail.html', {
+        'kit': kit,
+        'cameras': cameras_kit_doesnt_have,
+        'lenses': lenses_kit_doesnt_have
+    })
+
+def assoc_camera(request, kit_id, camera_id):
+    Kit.objects.get(id=kit_id).cameras.add(camera_id)
+    return redirect('detail', kit_id=kit_id)
+
+def assoc_lens(request, kit_id, lens_id):
+    Kit.objects.get(id=kit_id).lenses.add(lens_id)
+    return redirect('detail', kit_id=kit_id)
 
 class KitUpdate(UpdateView):
     model = Kit
