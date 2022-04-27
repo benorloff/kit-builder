@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Camera List</h1>
+
+{% for camera in camera_list %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ camera.make }} {{ camera.model }}</span>
+    </div>
+    <div class="card-action">
+        <a href="{% url 'main_app:cameras_detail' camera.id %}">View</a>
+        <a href="{% url 'main_app:cameras_update' camera.id %}">Edit</a>
+        <a href="{% url 'main_app:cameras_delete' camera.id %}">Delete</a>
+  </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

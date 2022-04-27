@@ -76,12 +76,11 @@ class CameraList(ListView):
     model = Camera
     template_name = 'cameras/index.html'
 
+class CameraDetail(DetailView):
+    model = Camera
+
 class LensList(ListView):
     pass
-
-def cameras_detail(request, camera_id):
-    camera = get_object_or_404(Camera, pk=camera_id)
-    return render(request, 'cameras/detail.html', {'camera': camera})
 
 class CameraUpdate(UpdateView):
     model = Camera

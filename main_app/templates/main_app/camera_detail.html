@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ camera.make }} {{ camera.model }}</h1>
+
+<p>Body Type: {{ camera.body_type }}</p>
+<p>Lens Mount: {{ camera.lens_mount }}</p>
+<p>Sensor Size: {{ camera.sensor_size }}</p>
+<p>Sensor Megapixels: {{ camera.sensor_mp }}</p>
+
+{% endblock %}
