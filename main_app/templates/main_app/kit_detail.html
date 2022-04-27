@@ -23,7 +23,7 @@
   <div class="col s6">
     <h3>Cameras</h3>
     {% if kit.cameras.count %}
-      {% for toy in kit.cameras.all %}
+      {% for camera in kit.cameras.all %}
         <div class="card">
           <div class="card-content">
             <span class="card-title">
@@ -39,7 +39,7 @@
   <div class="col s6">
     <h3>Lenses</h3>
     {% if kit.lenses.count %}
-      {% for toy in kit.lenses.all %}
+      {% for lens in kit.lenses.all %}
         <div class="card">
           <div class="card-content">
             <span class="card-title">

@@ -83,7 +83,7 @@ class Lens(models.Model):
 class Kit(models.Model):
     name = models.CharField(max_length=255)
     cameras = models.ManyToManyField(Camera)
-    lenses = models.ManyToManyField(Lens)
+    lens = models.ManyToManyField(Lens)
     def __str__(self):
         return (f"{self.name}")
     def get_absolute_url(self):
