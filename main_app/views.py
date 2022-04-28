@@ -69,6 +69,8 @@ def about(request):
 
 class KitList(ListView):
     model = Kit
+    def get_queryset(self):
+        return Kit.objects.filter(user=self.request.user)
 
 class KitCreate(CreateView):
     model = Kit
