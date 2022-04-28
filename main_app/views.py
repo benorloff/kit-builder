@@ -79,6 +79,14 @@ def assoc_lens(request, kit_id, lens_id):
     Kit.objects.get(id=kit_id).lenses.add(lens_id)
     return redirect('main_app:kits_detail', kit_id=kit_id)
 
+def unassoc_camera(request, kit_id, camera_id):
+    Kit.objects.get(id=kit_id).cameras.remove(camera_id)
+    return redirect('main_app:kits_detail', kit_id=kit_id)
+
+def unassoc_lens(request, kit_id, lens_id):
+    Kit.objects.get(id=kit_id).lenses.remove(lens_id)
+    return redirect('main_app:kits_detail', kit_id=kit_id)
+
 class KitUpdate(UpdateView):
     model = Kit
     fields = ['name']

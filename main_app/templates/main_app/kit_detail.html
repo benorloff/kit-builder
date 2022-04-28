@@ -1,19 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Kit Details</h1>
-
-<div class="row">
-  <div class="col s6 col-offset-3">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ kit.name }}</span>
-      </div>
-      <div class="card-action">
-        <a href="{% url 'main_app:kits_update' kit.id %}">Edit</a>
-        <a href="{% url 'main_app:kits_delete' kit.id %}">Delete</a>
-      </div>
-    </div>
+<div class="row valign-wrapper">
+  <div class="col s8">
+    <h1>{{ kit.name }} Details</h1>
+  </div>
+  <div class="col s4 right-align">
+    <a href="{% url 'main_app:kits_update' kit.id %}" class="btn">Edit</a>
+    <a href="{% url 'main_app:kits_delete' kit.id %}" class="btn red">Delete</a>
   </div>
 </div>
 
@@ -30,6 +24,12 @@
               {{ camera.make }} {{ camera.model }}
             </span>
           </div>
+          <div class="card-action">
+            <form action="{% url 'main_app:unassoc_camera' kit.id camera.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn red">Remove</button>
+            </form>
+          </div>
         </div>
       {% endfor %}
     {% else %}
@@ -45,6 +45,12 @@
             <span class="card-title">
               {{ lens.make }} {{ lens.model }}
             </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'main_app:unassoc_lens' kit.id lens.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn red">Remove</button>
+            </form>
           </div>
         </div>
       {% endfor %}
