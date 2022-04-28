@@ -15,6 +15,9 @@ import boto3
 
 from .models import Kit, Camera, Lens
 
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'kit-builder-app'
+
 def home(request):
     return HttpResponse('<h1>Welcome to KitBuilder!</h1>')
 
