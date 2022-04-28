@@ -39,12 +39,12 @@ def signup(request):
 def about(request):
     return render(request, 'about.html')
 
-class KitList(ListView):
+class KitList(LoginRequiredMixin, ListView):
     model = Kit
     def get_queryset(self):
         return Kit.objects.filter(user=self.request.user)
 
-class KitCreate(CreateView):
+class KitCreate(LoginRequiredMixin, CreateView):
     model = Kit
     fields = ['name']
     success_url = '/kits/'
@@ -53,6 +53,7 @@ class KitCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+@login_required
 def kits_detail(request, kit_id):
     kit = Kit.objects.get(id=kit_id)
     cameras_kit_doesnt_have = Camera.objects.exclude(id__in = kit.cameras.all().values_list('id'))
@@ -63,37 +64,41 @@ def kits_detail(request, kit_id):
         'lenses': lenses_kit_doesnt_have,
     })
 
+@login_required
 def assoc_camera(request, kit_id, camera_id):
     Kit.objects.get(id=kit_id).cameras.add(camera_id)
     return redirect('main_app:kits_detail', kit_id=kit_id)
 
+@login_required
 def assoc_lens(request, kit_id, lens_id):
     Kit.objects.get(id=kit_id).lenses.add(lens_id)
     return redirect('main_app:kits_detail', kit_id=kit_id)
 
+@login_required
 def unassoc_camera(request, kit_id, camera_id):
     Kit.objects.get(id=kit_id).cameras.remove(camera_id)
     return redirect('main_app:kits_detail', kit_id=kit_id)
 
+@login_required
 def unassoc_lens(request, kit_id, lens_id):
     Kit.objects.get(id=kit_id).lenses.remove(lens_id)
     return redirect('main_app:kits_detail', kit_id=kit_id)
 
-class KitUpdate(UpdateView):
+class KitUpdate(LoginRequiredMixin, UpdateView):
     model = Kit
     fields = ['name']
 
-class KitDelete(DeleteView):
+class KitDelete(LoginRequiredMixin, DeleteView):
     model = Kit
     success_url = '/kits/'
 
-class CameraList(ListView):
+class CameraList(LoginRequiredMixin, ListView):
     model = Camera
     
     def get_queryset(self):
         return Camera.objects.filter(user=self.request.user)
 
-class CameraCreate(CreateView):
+class CameraCreate(LoginRequiredMixin, CreateView):
     model = Camera
     fields = '__all__'
 
@@ -101,10 +106,10 @@ class CameraCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class CameraDetail(DetailView):
+class CameraDetail(LoginRequiredMixin, DetailView):
     model = Camera
 
-class CameraUpdate(UpdateView):
+class CameraUpdate(LoginRequiredMixin, UpdateView):
     model = Camera
     fields = '__all__'
     # def get_initial(self):
@@ -113,17 +118,17 @@ class CameraUpdate(UpdateView):
     #     initial['make'] = self.object.make
     #     return initial
 
-class CameraDelete(DeleteView):
+class CameraDelete(LoginRequiredMixin, DeleteView):
     model = Camera
     success_url = '/cameras/'
 
-class LensList(ListView):
+class LensList(LoginRequiredMixin, ListView):
     model = Lens
 
     def get_queryset(self):
         return Lens.objects.filter(user=self.request.user)
 
-class LensCreate(CreateView):
+class LensCreate(LoginRequiredMixin, CreateView):
     model = Lens
     fields = '__all__'
 
@@ -131,13 +136,13 @@ class LensCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class LensDetail(DetailView):
+class LensDetail(LoginRequiredMixin, DetailView):
     model = Lens
 
-class LensUpdate(UpdateView):
+class LensUpdate(LoginRequiredMixin, UpdateView):
     model = Lens
     fields = '__all__'
 
-class LensDelete(DeleteView):
+class LensDelete(LoginRequiredMixin, DeleteView):
     model = Lens
     success_url = '/lenses/'
