@@ -36,6 +36,7 @@ class Camera(models.Model):
     lens_mount = models.CharField(max_length=255)
     sensor_size = models.CharField(max_length=255)
     sensor_mp = models.DecimalField(max_digits=5, decimal_places=2)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     # image = models.FileField(upload_to='images/cameras/%Y/%m/%d/')
     def __str__(self):
         return (f"{self.make} {self.model}")
@@ -77,6 +78,7 @@ class Lens(models.Model):
     mount = models.CharField(max_length=255)
     max_aperture = models.CharField(max_length=255)
     min_aperture = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     # image = models.FileField(upload_to='images/lenses/%Y/%m/%d/')
     class Meta:
         verbose_name_plural = 'lenses'
@@ -89,6 +91,7 @@ class Kit(models.Model):
     name = models.CharField(max_length=255)
     cameras = models.ManyToManyField(Camera)
     lenses = models.ManyToManyField(Lens)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return (f"{self.name}")
     def get_absolute_url(self):
@@ -99,6 +102,7 @@ class Photo(models.Model):
     kit = models.ForeignKey(Kit, on_delete=models.CASCADE)
     camera = models.ForeignKey(Camera, on_delete=models.CASCADE)
     lens = models.ForeignKey(Lens, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Photo @{self.url}"
