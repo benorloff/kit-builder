@@ -61,6 +61,10 @@ class KitCreate(CreateView):
     fields = ['name']
     success_url = '/kits/'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 def kits_detail(request, kit_id):
     kit = Kit.objects.get(id=kit_id)
     cameras_kit_doesnt_have = Camera.objects.exclude(id__in = kit.cameras.all().values_list('id'))
@@ -102,6 +106,10 @@ class CameraCreate(CreateView):
     model = Camera
     fields = '__all__'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class CameraDetail(DetailView):
     model = Camera
 
@@ -124,6 +132,10 @@ class LensList(ListView):
 class LensCreate(CreateView):
     model = Lens
     fields = '__all__'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class LensDetail(DetailView):
     model = Lens
