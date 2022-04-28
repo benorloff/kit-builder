@@ -117,6 +117,9 @@ class KitDelete(DeleteView):
 
 class CameraList(ListView):
     model = Camera
+    
+    def get_queryset(self):
+        return Camera.objects.filter(user=self.request.user)
 
 class CameraCreate(CreateView):
     model = Camera
@@ -144,6 +147,9 @@ class CameraDelete(DeleteView):
 
 class LensList(ListView):
     model = Lens
+
+    def get_queryset(self):
+        return Lens.objects.filter(user=self.request.user)
 
 class LensCreate(CreateView):
     model = Lens
