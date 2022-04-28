@@ -90,3 +90,12 @@ class Kit(models.Model):
         return (f"{self.name}")
     def get_absolute_url(self):
         return reverse('main_app:kits_detail', kwargs={'pk': self.id})
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    kit = models.ForeignKey(Kit, on_delete=models.CASCADE)
+    camera = models.ForeignKey(Camera, on_delete=models.CASCADE)
+    lens = models.ForeignKey(Lens, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo @{self.url}"
