@@ -28,4 +28,5 @@ urlpatterns = [
     path('lenses/<int:pk>/', views.LensDetail.as_view(), name='lenses_detail'),
     path('lenses/<int:pk>/update/', views.LensUpdate.as_view(), name='lenses_update'),
     path('lenses/<int:pk>/delete/', views.LensDelete.as_view(), name='lenses_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
