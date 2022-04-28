@@ -100,6 +100,11 @@ class CameraDetail(DetailView):
 class CameraUpdate(UpdateView):
     model = Camera
     fields = '__all__'
+    # def get_initial(self):
+    #     print (self.object.__dict__)
+    #     initial = super().get_initial()
+    #     initial['make'] = self.object.make
+    #     return initial
 
 class CameraDelete(DeleteView):
     model = Camera

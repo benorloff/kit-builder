@@ -13,6 +13,21 @@
 </head>
 <body>
   <header class="navbar-fixed">
+    <ul id="kits-dropdown" class="dropdown-content">
+      <li><a href="{% url 'main_app:kits_index' %}">My Kits</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'main_app:kits_create' %}">Add Kit</a></li>
+    </ul>
+    <ul id="cameras-dropdown" class="dropdown-content">
+      <li><a href="{% url 'main_app:cameras_index' %}">My Cameras</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'main_app:cameras_create' %}">Add Cameras</a></li>
+    </ul>
+    <ul id="lenses-dropdown" class="dropdown-content">
+      <li><a href="{% url 'main_app:lenses_index' %}">My Lenses</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'main_app:lenses_create' %}">Add Lens</a></li>
+    </ul>
     <nav>
       <div class="nav-wrapper">
         <ul>
@@ -20,10 +35,9 @@
         </ul>
         <ul class="right">
           <li><a href="{% url 'main_app:about' %}">About</a></li>
-          <li><a href="{% url 'main_app:kits_create' %}">Add a Kit</a></li>
-          <li><a href="{% url 'main_app:kits_index' %}">My Kits</a></li>
-          <li><a href="/cameras">My Cameras</a></li>
-          <li><a href="/lenses">My Lenses</a></li>
+          <li><a class="dropdown-trigger" href="#!" data-target="kits-dropdown">Kits<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-trigger" href="#!" data-target="cameras-dropdown">Cameras<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-trigger" href="#!" data-target="lenses-dropdown">Lenses<i class="material-icons right">arrow_drop_down</i></a></li>
           {% if user.is_authenticated %}
 
           <li><a href="/logout">Logout</a></li>
