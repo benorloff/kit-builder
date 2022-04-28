@@ -1,12 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = 'main_app'
 urlpatterns = [
     path('', views.home, name='home'),
-    path('register/', views.register_request, name='register'),
-    path('login/', views.login_request, name='login'),
-    path('logout/', views.logout_request, name='logout'),
     path('about/', views.about, name='about'),
     path('kits/', views.KitList.as_view(), name='kits_index'),
     path('kits/create/', views.KitCreate.as_view(), name='kits_create'),
@@ -28,5 +25,6 @@ urlpatterns = [
     path('lenses/<int:pk>/', views.LensDetail.as_view(), name='lenses_detail'),
     path('lenses/<int:pk>/update/', views.LensUpdate.as_view(), name='lenses_update'),
     path('lenses/<int:pk>/delete/', views.LensDelete.as_view(), name='lenses_delete'),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup'),
 ]
