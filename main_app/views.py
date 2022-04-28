@@ -100,7 +100,7 @@ class CameraList(LoginRequiredMixin, ListView):
 
 class CameraCreate(LoginRequiredMixin, CreateView):
     model = Camera
-    fields = '__all__'
+    fields = ['make', 'model', 'body_type', 'lens_mount', 'sensor_size', 'sensor_mp']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -111,7 +111,7 @@ class CameraDetail(LoginRequiredMixin, DetailView):
 
 class CameraUpdate(LoginRequiredMixin, UpdateView):
     model = Camera
-    fields = '__all__'
+    fields = ['make', 'model', 'body_type', 'lens_mount', 'sensor_size', 'sensor_mp']
     # def get_initial(self):
     #     print (self.object.__dict__)
     #     initial = super().get_initial()

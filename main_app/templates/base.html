@@ -27,7 +27,7 @@
     <ul id="cameras-dropdown" class="dropdown-content">
       <li><a href="{% url 'main_app:cameras_index' %}">My Cameras</a></li>
       <li class="divider"></li>
-      <li><a href="{% url 'main_app:cameras_create' %}">Add Cameras</a></li>
+      <li><a href="{% url 'main_app:cameras_create' %}">Add Camera</a></li>
     </ul>
     <ul id="lenses-dropdown" class="dropdown-content">
       <li><a href="{% url 'main_app:lenses_index' %}">My Lenses</a></li>
@@ -46,6 +46,7 @@
           <li><a class="dropdown-trigger" href="#!" data-target="kits-dropdown">Kits<i class="material-icons right">arrow_drop_down</i></a></li>
           <li><a class="dropdown-trigger" href="#!" data-target="cameras-dropdown">Cameras<i class="material-icons right">arrow_drop_down</i></a></li>
           <li><a class="dropdown-trigger" href="#!" data-target="lenses-dropdown">Lenses<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a href="{% url 'main_app:logout' %}">Log Out</a></li>
 
           {% else %}
 
