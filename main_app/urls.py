@@ -11,6 +11,7 @@ urlpatterns = [
     path('kits/', views.KitList.as_view(), name='kits_index'),
     path('kits/create/', views.KitCreate.as_view(), name='kits_create'),
     path('kits/<int:kit_id>/', views.kits_detail, name='kits_detail'),
+    # path('kits/<int:kit_id>/add_photo/', views.add_photo, name='add_photo'),
     path('kits/<int:kit_id>/assoc_camera/<int:camera_id>/', views.assoc_camera, name='assoc_camera'),
     path('kits/<int:kit_id>/assoc_lens/<int:lens_id>/', views.assoc_lens, name='assoc_lens'),
     path('kits/<int:kit_id>/unassoc_camera/<int:camera_id>/', views.unassoc_camera, name='unassoc_camera'),
