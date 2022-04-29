@@ -112,11 +112,15 @@ class CameraDetail(LoginRequiredMixin, DetailView):
 class CameraUpdate(LoginRequiredMixin, UpdateView):
     model = Camera
     fields = ['make', 'model', 'body_type', 'lens_mount', 'sensor_size', 'sensor_mp']
-    # def get_initial(self):
-    #     print (self.object.__dict__)
-    #     initial = super().get_initial()
-    #     initial['make'] = self.object.make
-    #     return initial
+    def get_initial(self):
+        initial = super(CameraUpdate, self).get_initial()
+        print(dir(initial))
+        print(type(initial))
+        print(initial)
+        # print (dir(self.object))
+        # initial['make'].initial = self.object.make
+        # print(dir(initial))
+        return initial
 
 class CameraDelete(LoginRequiredMixin, DeleteView):
     model = Camera

@@ -4,30 +4,31 @@ from datetime import date
 
 from django.contrib.auth.models import User
 
+CAMERA_MAKE_CHOICES = (
+    ('AGF', 'Agfa'),
+    ('CAN', 'Canon'),
+    ('CAS', 'Casio'),
+    ('CON', 'Contax'),
+    ('DXO', 'DxO Labs'),
+    ('FUJ', 'Fujifilm'),
+    ('HAS', 'Hasselblad'),
+    ('KOD', 'Kodak'),
+    ('MIN', 'Minolta'),
+    ('KYO', 'Kyocera'),
+    ('LEI', 'Leica'),
+    ('NIK', 'Nikon'),
+    ('OLY', 'Olympus'),
+    ('PAN', 'Panasonic'),
+    ('PEN', 'Pentax'),
+    ('RIC', 'Ricoh'),
+    ('SAM', 'Samsung'),
+    ('SIG', 'Sigma'),
+    ('SON', 'Sony'),
+    ('ZEI', 'Zeiss'),
+)
+
 class Camera(models.Model):
-    MAKE_CHOICES = [
-        ('AGF', 'Agfa'),
-        ('CAN', 'Canon'),
-        ('CAS', 'Casio'),
-        ('CON', 'Contax'),
-        ('DXO', 'DxO Labs'),
-        ('FUJ', 'Fujifilm'),
-        ('HAS', 'Hasselblad'),
-        ('KOD', 'Kodak'),
-        ('MIN', 'Minolta'),
-        ('KYO', 'Kyocera'),
-        ('LEI', 'Leica'),
-        ('NIK', 'Nikon'),
-        ('OLY', 'Olympus'),
-        ('PAN', 'Panasonic'),
-        ('PEN', 'Pentax'),
-        ('RIC', 'Ricoh'),
-        ('SAM', 'Samsung'),
-        ('SIG', 'Sigma'),
-        ('SON', 'Sony'),
-        ('ZEI', 'Zeiss'),
-    ]
-    make = models.CharField(max_length=255, choices=MAKE_CHOICES)
+    make = models.CharField(max_length=255, choices=CAMERA_MAKE_CHOICES, default=CAMERA_MAKE_CHOICES[0][0])
     model = models.CharField(max_length=255)
     body_type = models.CharField(max_length=255)
     lens_mount = models.CharField(max_length=255)
@@ -39,6 +40,8 @@ class Camera(models.Model):
         return (f"{self.make} {self.model}")
     def get_absolute_url(self):
         return reverse('main_app:cameras_detail', kwargs={'pk': self.id})
+    def get_default(self):
+        return self.make
 
 class Lens(models.Model):
     MAKE_CHOICES = [
